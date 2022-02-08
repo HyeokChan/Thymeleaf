@@ -5,16 +5,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <div>
-        <tbody>
-        <tr th:object="${menu}">
-            <td><span th:text="*{menuId}"></span></td>
-            <td><span th:text="*{menuName}"></span></td>
-            <td><span th:text="*{menuUrl}"></span></td>
-        </tr>
-        </tbody>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+        <h2 th:utext="#{home.welcome}">welcome</h2>
+        <table class="table">
+            <thead>
+                <th>index</th>
+                <th>menuName</th>
+                <th>menuUrl</th>
+            </thead>
+            <tbody>
+                <tr th:object="${menu}">
+                    <td><span th:text="*{menuId}"></span></td>
+                    <td><span th:text="*{menuName}"></span></td>
+                    <td><span th:text="*{menuUrl}"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:replace="fragments/footer :: footer"/>
     </div>
-    <div th:replace="fragments/footer :: footer"/>
+
 </body>
 </html>
