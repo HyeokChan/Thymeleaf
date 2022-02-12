@@ -1,5 +1,6 @@
 package com.study.thymeleaf.helloThymeleaf.controller;
 
+import com.study.thymeleaf.helloThymeleaf.domain.Literal;
 import com.study.thymeleaf.helloThymeleaf.domain.Menu;
 import com.study.thymeleaf.helloThymeleaf.domain.User;
 import lombok.extern.slf4j.Slf4j;
@@ -21,14 +22,17 @@ public class homeController {
         /*사용자*/
         User user = new User(1L, "chan", "chan@naver.com");
         model.addAttribute("user", user);
-
-        /*메뉴*/
-        Menu menu = new Menu();
-        menu.setMenuId(1L);
-        menu.setMenuName("기본");
-        menu.setMenuUrl("/home/basic");
-        model.addAttribute("menu", menu);
         return "home";
+    }
+
+    @GetMapping("/literals")
+    public String literalsForm(Model model) {
+        Literal literal = new Literal();
+        literal.setTrueValue(true);
+        literal.setFalseValue(false);
+        literal.setNullValue(null);
+        model.addAttribute("literal", literal);
+        return "literals";
     }
 
     @GetMapping("/product/list")

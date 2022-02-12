@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!--프래그먼트-->
 <head th:replace="fragments/header :: header">
     <title>Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -20,26 +21,11 @@
             <a href="#" class="list-group-item disabled">
                 Menu
             </a>
+            <a href="#" th:href="@{/literals}" class="list-group-item">리터럴</a>
             <a href="#" th:href="@{/product/list}" class="list-group-item">Product List</a>
             <a href="#" th:href="@{/member/list}" class="list-group-item">Member List</a>
             <a href="#" th:href="@{order/list}" class="list-group-item">Order List</a>
         </div>
-
-        <table class="table">
-            <thead>
-                <th>index</th>
-                <th>menuName</th>
-                <th>menuUrl</th>
-            </thead>
-            <tbody>
-                <tr th:object="${menu}">
-                    <!--선택변수표현식-->
-                    <td><span th:text="*{menuId}"></span></td>
-                    <td><span th:text="*{menuName}"></span></td>
-                    <td><span th:text="*{menuUrl}"></span></td>
-                </tr>
-            </tbody>
-        </table>
         <div th:replace="fragments/footer :: footer"/>
     </div>
 
