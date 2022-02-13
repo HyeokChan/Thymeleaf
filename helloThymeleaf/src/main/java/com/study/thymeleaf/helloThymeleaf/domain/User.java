@@ -9,10 +9,4 @@ public class User {
     private Long userId;
     private String userName;
     private String userEml;
-
-    public User(Long userId, String userName, String userEml) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userEml = userEml;
-    }
 }

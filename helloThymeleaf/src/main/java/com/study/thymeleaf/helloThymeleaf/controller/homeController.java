@@ -1,5 +1,6 @@
 package com.study.thymeleaf.helloThymeleaf.controller;
 
+import com.study.thymeleaf.helloThymeleaf.domain.Conditional;
 import com.study.thymeleaf.helloThymeleaf.domain.Literal;
 import com.study.thymeleaf.helloThymeleaf.domain.Operation;
 import com.study.thymeleaf.helloThymeleaf.domain.User;
@@ -19,7 +20,10 @@ public class homeController {
         /*현재날짜*/
         model.addAttribute("today", Calendar.getInstance());
         /*사용자*/
-        User user = new User(1L, "chan", "chan@naver.com");
+        User user = new User();
+        user.setUserId(1L);
+        user.setUserName("chan");
+        user.setUserEml("chan@naver.com");
         model.addAttribute("user", user);
         return "home";
     }
@@ -30,7 +34,11 @@ public class homeController {
         literal.setTrueValue(true);
         literal.setFalseValue(false);
         literal.setNullValue(null);
-        User user = new User(1L, "chan", "chan@naver.com");
+        /*사용자*/
+        User user = new User();
+        user.setUserId(2L);
+        user.setUserName("chan");
+        user.setUserEml("chan@naver.com");
         model.addAttribute("user", user);
         model.addAttribute("literal", literal);
         return "menu/literals";
@@ -46,10 +54,17 @@ public class homeController {
         return "menu/operations";
     }
 
-
-    @GetMapping("/product/list")
-    public String productListForm(Model model) {
-
-        return "product/list";
+    @GetMapping("/conditional")
+    public String conditionalForm(Model model) {
+        Conditional conditional = new Conditional();
+        conditional.setEvenValue(2);
+        conditional.setEvenBoolValue(true);
+        User user = new User();
+        user.setUserId(3L);
+        user.setUserName("chan");
+        model.addAttribute("conditional", conditional);
+        model.addAttribute("user", user);
+        return "menu/conditional";
     }
+
 }

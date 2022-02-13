@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Menu {
-    private Long menuId;
-    private String menuName;
-    private String menuUrl;
+public class Conditional {
+    private int evenValue;
+    private boolean evenBoolValue;
 }

@@ -11,17 +11,15 @@
                 <div th:replace="fragments/bodyHeader :: bodyHeader"/>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="list-group mt-2">
                     <li class="list-group-item disabled">
-                        Arithmetic operations
+                        Conditional expressions
                     </li>
                     <li class="list-group-item">
-                        <div class="text-danger" th:with="isEven=(${operation.amCount} % 2 == 0)">
-                            isEven=(${operation.amCount} % 2 == 0)
-                        </div>
+                        <p th:class="(${conditional.evenValue} &gt; 1) ? 'text-primary' : 'text-danger'">th:class text-primary</p>
+                        <p th:class="${conditional.evenBoolValue} ? 'text-danger' : 'text-primary'" >th:class text-danger</p>
                     </li>
                 </div>
             </div>
@@ -30,11 +28,12 @@
             <div class="col-md-12">
                 <div class="list-group mt-2">
                     <li class="list-group-item disabled">
-                        Comparators and Equality
+                        Default expressions (Elvis operator)
                     </li>
                     <li class="list-group-item">
-                        <div th:if="${operation.cpCount} &gt; 1">
-                            <span class="text-danger" th:text="'Execution mode is ' + ((${operation.cpMode} == 'dev') ? 'Developer' : 'Production')"/>
+                        <div th:object="${user}">
+                            <p>Name : <span class="text-danger" th:text="*{userName} ?: '(no userName specified)'">no name</span></p>
+                            <p>Email : <span class="text-danger" th:text="*{userEml} ?: '(no userEml specified)'">no email</span></p>
                         </div>
                     </li>
                 </div>
