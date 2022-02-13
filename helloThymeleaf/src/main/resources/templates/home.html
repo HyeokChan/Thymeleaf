@@ -7,26 +7,66 @@
 </head>
 <body>
     <div class="container">
-        <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-        <!--메시지표현식-->
-        <h2 th:utext="#{home.welcome(${user.userName})}">welcome</h2>
-        <!--변수표현식, 리터럴대체, calendars유틸리티개체-->
-        <p th:text="|Today is ${#calendars.format(today, 'YYYY-MM-dd')}|">13 February 2011</p>
-        <!--선택변수표현식-->
-        <div th:object="${user}">
-            <p>Name: <span th:text="*{userName}">Sebastian</span></p>
-            <p>Email: <span th:text="*{userEml}">Pepper</span></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+            </div>
         </div>
-        <div class="list-group">
-            <a href="#" class="list-group-item disabled">
-                Menu
-            </a>
-            <a href="#" th:href="@{/literals}" class="list-group-item">리터럴</a>
-            <a href="#" th:href="@{/product/list}" class="list-group-item">Product List</a>
-            <a href="#" th:href="@{/member/list}" class="list-group-item">Member List</a>
-            <a href="#" th:href="@{order/list}" class="list-group-item">Order List</a>
+        <div class="row">
+            <div class="col-md-12">
+                <!--메시지표현식-->
+                <h2 class="text-black" th:utext="#{home.welcome(${user.userName})}">welcome</h2>
+            </div>
         </div>
-        <div th:replace="fragments/footer :: footer"/>
+        <div class="row">
+            <div class="col-md-12">
+                <!--변수표현식, 리터럴대체, calendars유틸리티개체-->
+                <p th:text="|Today is ${#calendars.format(today, 'YYYY-MM-dd')}|">13 February 2011</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Name
+                        </div>
+                    </div>
+                    <div class="panel-body" th:object="${user}">
+                        <span th:text="*{userName}">Sebastian</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Email
+                        </div>
+                    </div>
+                    <div class="panel-body" th:object="${user}">
+                        <span th:text="*{userEml}">abc@naver.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group">
+                    <a href="#" class="list-group-item disabled">
+                        Menu
+                    </a>
+                    <a href="#" th:href="@{/literals}" class="list-group-item">Literals</a>
+                    <a href="#" th:href="@{/operations}" class="list-group-item">operations</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div th:replace="fragments/footer :: footer"/>
+            </div>
+        </div>
+
     </div>
 
 </body>

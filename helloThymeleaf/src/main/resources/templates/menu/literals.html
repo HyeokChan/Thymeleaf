@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li href="#" class="list-group-item disabled">
+                        Text literals
+                    </li>
+                    <li class="list-group-item text-danger" th:text="'working web application'"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li href="#" class="list-group-item disabled">
+                        Number literals
+                    </li>
+                    <li class="list-group-item">
+                        this year is <span class="text-danger" th:text="2022">9999</span>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li href="#" class="list-group-item disabled">
+                        Boolean literals
+                    </li>
+                    <!--타임리프 조건문 if-->
+                    <li class="list-group-item" th:if="${literal.trueValue} == true">
+                        this is <span class="text-danger" th:text="${literal.trueValue}"></span>
+                    </li>
+                    <li class="list-group-item" th:if="${literal.falseValue} == false">
+                        this is <span class="text-danger" th:text="${literal.falseValue}"></span>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li href="#" class="list-group-item disabled">
+                        The null literal
+                    </li>
+                    <li class="list-group-item" th:if="${literal.nullValue} == null">
+                        this is <span class="text-danger" th:text="${literal.nullValue}"></span>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li class="list-group-item disabled">
+                        Appending texts
+                    </li>
+                    <li class="list-group-item text-danger" th:text="'this is Appending texts, ' + ${user.userName}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li class="list-group-item disabled">
+                        Literal substitutions
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-danger" th:text="|this is literal substitutions, ${user.userName}|"/>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragments/footer :: footer"/>
+    </div>
+</body>
+</html>

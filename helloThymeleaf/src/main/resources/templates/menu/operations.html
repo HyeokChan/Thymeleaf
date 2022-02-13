@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li class="list-group-item disabled">
+                        Arithmetic operations
+                    </li>
+                    <li class="list-group-item">
+                        <div class="text-danger" th:with="isEven=(${operation.amCount} % 2 == 0)">
+                            isEven=(${operation.amCount} % 2 == 0)
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li class="list-group-item disabled">
+                        Comparators and Equality
+                    </li>
+                    <li class="list-group-item">
+                        <div th:if="${operation.cpCount} &gt; 1">
+                            <span class="text-danger" th:text="'Execution mode is ' + ((${operation.cpMode} == 'dev') ? 'Developer' : 'Production')"/>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div th:replace="fragments/footer :: footer"/>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
