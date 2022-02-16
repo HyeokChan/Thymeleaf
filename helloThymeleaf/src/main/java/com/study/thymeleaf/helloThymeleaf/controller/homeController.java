@@ -67,4 +67,10 @@ public class homeController {
         return "menu/conditional";
     }
 
+    @GetMapping("/attribute")
+    public String attributeForm(Model model) {
+
+        return "menu/attribute";
+    }
+
 }

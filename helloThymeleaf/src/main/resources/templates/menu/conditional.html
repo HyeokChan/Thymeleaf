@@ -41,6 +41,20 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <div class="list-group mt-2">
+                    <li class="list-group-item disabled">
+                        The No-Operation token
+                    </li>
+                    <li class="list-group-item">
+                        <div th:object="${user}">
+                            <p>MblCnpc : <span class="text-danger" th:text="*{userMblCpnc} ?: _">The No-Operation token</span></p>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div th:replace="fragments/footer :: footer"/>
             </div>
         </div>

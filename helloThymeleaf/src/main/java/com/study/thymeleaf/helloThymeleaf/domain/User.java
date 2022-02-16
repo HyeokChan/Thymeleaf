@@ -9,4 +9,5 @@ public class User {
     private Long userId;
     private String userName;
     private String userEml;
+    private String userMblCpnc;
 }
