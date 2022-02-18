@@ -1,9 +1,6 @@
 package com.study.thymeleaf.helloThymeleaf.controller;
 
-import com.study.thymeleaf.helloThymeleaf.domain.Conditional;
-import com.study.thymeleaf.helloThymeleaf.domain.Literal;
-import com.study.thymeleaf.helloThymeleaf.domain.Operation;
-import com.study.thymeleaf.helloThymeleaf.domain.User;
+import com.study.thymeleaf.helloThymeleaf.domain.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,6 +66,10 @@ public class homeController {
 
     @GetMapping("/attribute")
     public String attributeForm(Model model) {
+        Attribute attribute = new Attribute();
+        attribute.setSubBtnText("Subscribe");
+        model.addAttribute("attribute", attribute);
+
 
         return "menu/attribute";
     }

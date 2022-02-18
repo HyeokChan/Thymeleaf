@@ -15,12 +15,46 @@
         <div class="col-md-12">
             <div class="list-group mt-2">
                 <li class="list-group-item disabled">
-
+                    Setting the value of any attribute
                 </li>
                 <li class="list-group-item">
-
+                    <form action="subscribe.html">
+                        <fieldset>
+                            <input type="text" name="email" />
+                            <input type="submit" value="Subscribe!" th:attr="value=${attribute.subBtnText}"/>
+                        </fieldset>
+                    </form>
                 </li>
             </div>
+            <div class="list-group mt-2">
+                <li class="list-group-item disabled">
+                    Setting value to specific attributes
+                </li>
+                <li class="list-group-item">
+                    <form action="subscribe.html">
+                        <fieldset>
+                            <input type="text" name="email" />
+                            <input type="submit" value="Subscribe!" th:value="${attribute.subBtnText}"/>
+                        </fieldset>
+                    </form>
+                </li>
+            </div>
+            <div class="list-group mt-2">
+                <li class="list-group-item disabled">
+                    Setting more than one value at a time
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            <a href="#" class="thumbnail">
+                                <img th:src="@{/images/temp.png}" th:alt="#{img.logo}">
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </div>
+
+
         </div>
     </div>
     <div class="row">
