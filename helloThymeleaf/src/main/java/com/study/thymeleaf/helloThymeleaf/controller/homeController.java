@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -69,9 +71,21 @@ public class homeController {
         Attribute attribute = new Attribute();
         attribute.setSubBtnText("Subscribe");
         model.addAttribute("attribute", attribute);
-
-
         return "menu/attribute";
+    }
+
+    @GetMapping("/iteration")
+    public String iterationForm(Model model) {
+        List<Prod> prods = new ArrayList<>();
+        for (int i = 1; i < 5; i++) {
+            Prod prod = new Prod();
+            prod.setProdId(Long.valueOf(i));
+            prod.setProdName("Product" + i);
+            prod.setProdAmt(i * 10000);
+            prods.add(prod);
+        }
+        model.addAttribute("prods", prods);
+        return "menu/iteration";
     }
 
 }

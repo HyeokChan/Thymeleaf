@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group mt-2">
+                <li class="list-group-item disabled">
+                    Iteration basics
+                </li>
+                <li class="list-group-item">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col-md-4">Id</th>
+                                <th class="col-md-4">Name</th>
+                                <th class="col-md-4">Amt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="prod : ${prods}">
+                                <td th:text="${prod.getProdId()}">0</td>
+                                <td th:text="${prod.getProdName()}">Product</td>
+                                <td th:text="${prod.getProdAmt()}">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group mt-2">
+                <li class="list-group-item disabled">
+                    Keeping iteration status
+                </li>
+                <li class="list-group-item">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="col-md-2">Id</th>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-2">Amt</th>
+                            <th class="col-md-2">index</th>
+                            <th class="col-md-2">count</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="prod, iterStat : ${prods}" th:class="${iterStat.odd} ? 'success'">
+                            <td th:text="${prod.getProdId()}">0</td>
+                            <td th:text="${prod.getProdName()}">Product</td>
+                            <td th:text="${prod.getProdAmt()}">0</td>
+                            <td th:text="${iterStat.index}">0</td>
+                            <td th:text="${iterStat.count}">0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div th:replace="fragments/footer :: footer"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
