@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -76,16 +77,47 @@ public class homeController {
 
     @GetMapping("/iteration")
     public String iterationForm(Model model) {
+        List<Prod> prods = createProds();
+        model.addAttribute("prods", prods);
+        return "menu/iteration";
+    }
+
+    @GetMapping("/conditionalEvaluation")
+    public String conditionalEvaluationForm(Model model) {
+        List<Prod> prods = createProds();
+        model.addAttribute("prods", prods);
+        return "menu/conditionalEvaluation";
+    }
+
+    @GetMapping("/conditionalEvaluationComments{prodId}")
+    public String commentsForm(@PathVariable String prodId, Model model) {
+
+        return "prod/comments";
+    }
+
+    private List<Prod> createProds() {
         List<Prod> prods = new ArrayList<>();
         for (int i = 1; i < 5; i++) {
             Prod prod = new Prod();
             prod.setProdId(Long.valueOf(i));
             prod.setProdName("Product" + i);
             prod.setProdAmt(i * 10000);
+            List<Comment> comments = createComments(i);
+            prod.setComments(comments);
             prods.add(prod);
         }
-        model.addAttribute("prods", prods);
-        return "menu/iteration";
+        return prods;
+    }
+
+    private List<Comment> createComments(int i) {
+        List<Comment> comments = new ArrayList<>();
+        for (int j = 1; j < i; j++) {
+            Comment comment = new Comment();
+            comment.setCommentId(Long.valueOf(j));
+            comment.setCommentCn("comment" + i + "-" + j);
+            comments.add(comment);
+        }
+        return comments;
     }
 
 }
