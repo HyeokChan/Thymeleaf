@@ -85,7 +85,9 @@ public class homeController {
     @GetMapping("/conditionalEvaluation")
     public String conditionalEvaluationForm(Model model) {
         List<Prod> prods = createProds();
+        List<User> users = createUsers();
         model.addAttribute("prods", prods);
+        model.addAttribute("users", users);
         return "menu/conditionalEvaluation";
     }
 
@@ -118,6 +120,26 @@ public class homeController {
             comments.add(comment);
         }
         return comments;
+    }
+
+    private List<User> createUsers() {
+        List<User> users = new ArrayList<>();
+        User userA = new User();
+        userA.setUserId(1L);
+        userA.setUserName("userA");
+        userA.setUserRole(Role.ADMIN);
+        User userB = new User();
+        userB.setUserId(2L);
+        userB.setUserName("userB");
+        userB.setUserRole(Role.MANAGER);
+        User userC = new User();
+        userC.setUserId(2L);
+        userC.setUserName("userC");
+        userC.setUserRole(Role.GUEST);
+        users.add(userA);
+        users.add(userB);
+        users.add(userC);
+        return users;
     }
 
 }

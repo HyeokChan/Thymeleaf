@@ -44,6 +44,31 @@
                     </table>
                 </li>
             </div>
+
+
+            <div class="list-group mt-2">
+                <li class="list-group-item disabled">
+                    Switch statements
+                </li>
+                <li class="list-group-item">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="col-md-12">User Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user : ${users}">
+                            <td th:switch="${#strings.toString(user.getUserRole())}">       <!--enum 타입 비교-->
+                                <span th:case="#{role.admin}" th:text="|${user.getUserName()}(${user.getUserId()}) is Admin|"></span>
+                                <span th:case="#{role.manager}" th:text="|${user.getUserName()}(${user.getUserId()}) is Manager|"></span>
+                                <span th:case="#{role.guest}" th:text="|${user.getUserName()}(${user.getUserId()}) is Guest|"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </div>
         </div>
     </div>
 

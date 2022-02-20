@@ -10,4 +10,5 @@ public class User {
     private String userName;
     private String userEml;
     private String userMblCpnc;
+    private Role userRole;
 }
