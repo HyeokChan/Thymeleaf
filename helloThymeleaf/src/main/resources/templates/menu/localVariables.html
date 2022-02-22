@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group mt-2">
+                <li class="list-group-item disabled">
+                    Local Variables
+                </li>
+                <li class="list-group-item">
+                    <div th:with="firstProd=${prods[0]}, secondProd=${prods[1]}">
+                        <p th:text="|first Product is ${firstProd.getProdName()}|"></p>
+                        <p th:text="|second Product is ${secondProd.getProdName()}|"></p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div th:with="firstIndex=0, firstIndexProd=${prods[firstIndex]}">
+                        <p th:text="|firstIndex Product is ${firstIndexProd.getProdName()}|"></p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div th:with="df=#{date.format}">
+                        <p th:text="|Today is ${#calendars.format(today, df)}|">2000-01-01</p>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div th:replace="fragments/footer :: footer"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

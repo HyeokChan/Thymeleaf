@@ -97,6 +97,15 @@ public class homeController {
         return "prod/comments";
     }
 
+    @GetMapping("/localVariables")
+    public String localVariablesForm(Model model) {
+        List<Prod> prods = createProds();
+        model.addAttribute("prods", prods);
+        model.addAttribute("today", Calendar.getInstance());
+
+        return "menu/localVariables";
+    }
+
     private List<Prod> createProds() {
         List<Prod> prods = new ArrayList<>();
         for (int i = 1; i < 5; i++) {
