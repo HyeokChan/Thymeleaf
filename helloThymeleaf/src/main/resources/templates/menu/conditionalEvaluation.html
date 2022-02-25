@@ -29,17 +29,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="prod : ${prods}">
-                            <td th:text="${prod.getProdId()}">0</td>
-                            <td th:text="${prod.getProdName()}">Product</td>
-                            <td th:text="${prod.getProdAmt()}">0</td>
-                            <td>
-                                <span th:text="${#lists.size(prod.getComments())}">2</span> comment/s
-                                <a href="comments.html"
-                                   th:href="@{/conditionalEvaluationComments(prodId = ${prod.getProdId()})}"
-                                   th:if="${not #lists.isEmpty(prod.getComments)}">view</a>
-                            </td>
-                        </tr>
+                            <tr th:each="prod : ${prods}">
+                                <td th:text="${prod.getProdId()}">0</td>
+                                <td th:text="${prod.getProdName()}">Product</td>
+                                <td th:text="${prod.getProdAmt()}">0</td>
+                                <td>
+                                    <span th:text="${#lists.size(prod.getComments())}">2</span> comment/s
+                                    <a href="comments.html"
+                                       th:href="@{/conditionalEvaluationComments(prodId = ${prod.getProdId()})}"
+                                       th:if="${not #lists.isEmpty(prod.getComments)}">view</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </li>
@@ -58,13 +58,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="user : ${users}">
-                            <td th:switch="${#strings.toString(user.getUserRole())}">       <!--enum 타입 비교-->
-                                <span th:case="#{role.admin}" th:text="|${user.getUserName()}(${user.getUserId()}) is Admin|"></span>
-                                <span th:case="#{role.manager}" th:text="|${user.getUserName()}(${user.getUserId()}) is Manager|"></span>
-                                <span th:case="#{role.guest}" th:text="|${user.getUserName()}(${user.getUserId()}) is Guest|"></span>
-                            </td>
-                        </tr>
+                            <tr th:each="user : ${users}">
+                                <td th:switch="${#strings.toString(user.getUserRole())}">       <!--enum 타입 비교-->
+                                    <span th:case="#{role.admin}" th:text="|${user.getUserName()}(${user.getUserId()}) is Admin|"></span>
+                                    <span th:case="#{role.manager}" th:text="|${user.getUserName()}(${user.getUserId()}) is Manager|"></span>
+                                    <span th:case="#{role.guest}" th:text="|${user.getUserName()}(${user.getUserId()}) is Guest|"></span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </li>

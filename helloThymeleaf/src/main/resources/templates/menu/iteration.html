@@ -57,13 +57,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="prod, iterStat : ${prods}" th:class="${iterStat.odd} ? 'success'">
-                            <td th:text="${prod.getProdId()}">0</td>
-                            <td th:text="${prod.getProdName()}">Product</td>
-                            <td th:text="${prod.getProdAmt()}">0</td>
-                            <td th:text="${iterStat.index}">0</td>
-                            <td th:text="${iterStat.count}">0</td>
-                        </tr>
+                            <tr th:each="prod, iterStat : ${prods}" th:class="${iterStat.odd} ? 'success'">
+                                <td th:text="${prod.getProdId()}">0</td>
+                                <td th:text="${prod.getProdName()}">Product</td>
+                                <td th:text="${prod.getProdAmt()}">0</td>
+                                <td th:text="${iterStat.index}">0</td>
+                                <td th:text="${iterStat.count}">0</td>
+                            </tr>
                         </tbody>
                     </table>
                 </li>
